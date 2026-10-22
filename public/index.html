@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChangeScope — dependency decisions, with evidence</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside>
+        <a class="brand" href="#top"><span class="brand-mark">C</span><span>ChangeScope</span></a>
+        <nav aria-label="Primary navigation">
+          <button class="nav-item active" data-view="overview"><span>▦</span> Overview</button>
+          <button class="nav-item" data-view="changes"><span>↟</span> Change feed <b id="side-count">5</b></button>
+          <button class="nav-item" data-view="actions"><span>✓</span> Action plan</button>
+        </nav>
+        <div class="side-foot">
+          <span class="live-dot"></span> Demo workspace
+          <p>Auditable dependency change decisions.</p>
+        </div>
+      </aside>
+      <main id="top">
+        <header>
+          <div>
+            <p class="eyebrow">WORKSPACE / PERSONAL</p>
+            <h1 id="project-title">commerce-web</h1>
+          </div>
+          <div class="header-actions">
+            <label class="secondary-button file-label">Import package.json<input id="file-input" type="file" accept="application/json" /></label>
+            <button class="primary-button" id="sync-button"><span>↻</span> Run analysis</button>
+          </div>
+        </header>
+
+        <section class="hero-card">
+          <div>
+            <p class="eyebrow accent">DEPENDENCY INTELLIGENCE</p>
+            <h2>Know which updates need a decision.</h2>
+            <p>ChangeScope turns release notes and registry updates into evidence-backed actions for the dependencies you actually use.</p>
+          </div>
+          <div class="last-sync"><span class="sync-icon">✓</span><div><small>LAST ANALYSIS</small><strong id="last-sync">Just now</strong><span id="sync-status">5 sources processed</span></div></div>
+        </section>
+
+        <section class="metric-grid" aria-label="Change summary">
+          <article class="metric"><span class="metric-label">Needs attention</span><strong id="metric-high">2</strong><span class="metric-note high">High impact</span></article>
+          <article class="metric"><span class="metric-label">Review this week</span><strong id="metric-medium">2</strong><span class="metric-note medium">Behavior changes</span></article>
+          <article class="metric"><span class="metric-label">Informational</span><strong id="metric-low">1</strong><span class="metric-note low">No action needed</span></article>
+          <article class="metric"><span class="metric-label">Tracked packages</span><strong id="metric-deps">12</strong><span class="metric-note neutral">From package.json</span></article>
+        </section>
+
+        <section class="content-section" id="changes-section">
+          <div class="section-heading"><div><p class="eyebrow">CHANGE FEED</p><h2>Changes requiring review</h2></div><div class="filters" role="group" aria-label="Filter changes"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="high">High</button><button class="filter" data-filter="medium">Medium</button><button class="filter" data-filter="low">Low</button></div></div>
+          <div id="change-list" class="change-list"></div>
+        </section>
+
+        <section class="content-section action-section" id="actions-section">
+          <div class="section-heading"><div><p class="eyebrow">ACTION PLAN</p><h2>Focused next steps</h2></div><button class="secondary-button" id="export-button">Export Markdown</button></div>
+          <div id="action-list" class="action-list"></div>
+        </section>
+      </main>
+    </div>
+    <dialog id="detail-dialog"><div id="dialog-content"></div></dialog>
+    <div id="toast" role="status"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
