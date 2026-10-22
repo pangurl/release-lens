@@ -18,4 +18,4 @@ createServer((req, res) => {
   }
   res.writeHead(200, { "Content-Type": `${types[extname(file)] || "application/octet-stream"}; charset=utf-8`, "Cache-Control": "no-store" });
   createReadStream(file).pipe(res);
-}).listen(port, () => console.log(`ChangeScope running at http://localhost:${port}`));
+}).listen(port, () => console.log(`ReleaseLens running at http://localhost:${port}`));

@@ -42,7 +42,7 @@ function renderActions() {
 
 function showDetail(id) {
   const card = state.cards.find((item) => item.id === id);
-  $("#dialog-content").innerHTML = `<div class="dialog-body"><p class="eyebrow">EVIDENCE / ${esc(card.source.toUpperCase())}</p><h2>${esc(card.title)}</h2><p>ChangeScope linked this change to <strong>${esc(card.project)}</strong> because the imported manifest includes <code>${esc(card.dependency)}@${esc(card.installed)}</code>.</p><blockquote class="quote">“${esc(card.quote)}”</blockquote><div class="details"><div><span>CONFIDENCE</span><strong>${card.confidence}%</strong></div><div><span>RECOMMENDED ACTION</span><strong>${esc(card.risk.toUpperCase())}</strong></div></div><p><strong>Suggested next step:</strong> ${esc(card.action)}</p><div class="dialog-actions"><a class="secondary-button" target="_blank" rel="noreferrer" href="${esc(card.sourceUrl)}">Open source ↗</a><button class="primary-button" id="close-dialog">Close</button></div></div>`;
+  $("#dialog-content").innerHTML = `<div class="dialog-body"><p class="eyebrow">EVIDENCE / ${esc(card.source.toUpperCase())}</p><h2>${esc(card.title)}</h2><p>ReleaseLens linked this change to <strong>${esc(card.project)}</strong> because the imported manifest includes <code>${esc(card.dependency)}@${esc(card.installed)}</code>.</p><blockquote class="quote">“${esc(card.quote)}”</blockquote><div class="details"><div><span>CONFIDENCE</span><strong>${card.confidence}%</strong></div><div><span>RECOMMENDED ACTION</span><strong>${esc(card.risk.toUpperCase())}</strong></div></div><p><strong>Suggested next step:</strong> ${esc(card.action)}</p><div class="dialog-actions"><a class="secondary-button" target="_blank" rel="noreferrer" href="${esc(card.sourceUrl)}">Open source ↗</a><button class="primary-button" id="close-dialog">Close</button></div></div>`;
   dialog.showModal();
   $("#close-dialog").addEventListener("click", () => dialog.close());
 }
@@ -81,7 +81,7 @@ document.addEventListener("click", (event) => {
 
 $("#export-button").addEventListener("click", () => {
   const rows = state.cards.filter((card) => card.risk !== "low").map((card) => `- [${state.actions.has(card.id) ? "x" : " "}] **${card.dependency} ${card.installed} → ${card.to}** (${card.risk})\n  - Action: ${card.action}\n  - Evidence: ${card.sourceUrl}`).join("\n");
-  const blob = new Blob([`# ${state.analysis.project} — ChangeScope action plan\n\n${rows}\n`], { type: "text/markdown" });
+  const blob = new Blob([`# ${state.analysis.project} — ReleaseLens action plan\n\n${rows}\n`], { type: "text/markdown" });
   const url = URL.createObjectURL(blob); const a = Object.assign(document.createElement("a"), { href: url, download: "changescope-action-plan.md" }); a.click(); URL.revokeObjectURL(url); notify("Markdown action plan exported.");
 });
 

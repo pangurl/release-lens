@@ -1,10 +1,10 @@
-# ChangeScope
+# ReleaseLens
 
 **Dependency changes, translated into decisions with evidence.**
 
-ChangeScope is an interactive developer-tool prototype. A user imports a Node.js `package.json`; the application identifies relevant dependency changes, ranks their impact, surfaces the quoted source evidence, and turns important changes into a focused action plan.
+ReleaseLens is an interactive developer-tool prototype. A user imports a Node.js `package.json`; the application identifies relevant dependency changes, ranks their impact, surfaces the quoted source evidence, and turns important changes into a focused action plan.
 
-![ChangeScope interface](docs/preview.svg)
+![ReleaseLens interface](docs/preview.svg)
 
 ## Demo capabilities
 
